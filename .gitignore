@@ -1,0 +1,4 @@
+# ROS2 colcon 编译产物与日志（不备份）
+build/
+install/
+log/
