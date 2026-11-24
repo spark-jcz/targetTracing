@@ -1,0 +1,20 @@
+# 统一 LF。板上 bash 对 CRLF 零容忍（报 $'\r': command not found），
+# 而本仓库经常在 Windows / WSL 9p 挂载之间来回编辑，必须锁死。
+* text=auto eol=lf
+
+*.sh    text eol=lf
+*.m     text eol=lf
+*.cpp   text eol=lf
+*.h     text eol=lf
+*.hpp   text eol=lf
+*.md    text eol=lf
+*.txt   text eol=lf
+*.xml   text eol=lf
+*.py    text eol=lf
+
+# 二进制资源不做行尾转换（当前仓库没有，预防将来加入）
+*.rknn  binary
+*.onnx  binary
+*.pt    binary
+*.png   binary
+*.jpg   binary

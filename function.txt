@@ -1,0 +1,61 @@
+function [xcmd,ycmd,zcmd]=trajectory(tim,L,T_des)
+    %输入tim是运行时钟，L是期望正方形边长和高度，T_des是飞完每一个边长的期望时间
+    
+    %    2---------------------3
+    %    -          >          -
+    %    -                     -
+    %    -                     -
+    %    -                     -
+    %    -                     -
+    %    -          <          -
+    %    1---------------------4
+    Ts = T_des;
+    if (tim>=0 && tim<=Ts)
+        xcmd = 0;
+        ycmd = 0;
+        zcmd = L/Ts*tim;
+    elseif (tim>Ts && tim<Ts+2)
+        xcmd = 0;
+        ycmd = 0;
+        zcmd = L;
+    elseif(tim>=Ts+2 && tim<=2*Ts+2)
+        xcmd = L/Ts*(tim-Ts-2);
+        ycmd = 0;
+        zcmd = L;
+    elseif (tim>2*Ts+2 && tim<=2*Ts+4)
+        xcmd = L;
+        ycmd = 0;
+        zcmd = L;
+    elseif (tim>2*Ts+4 && tim<=3*Ts+4)
+        xcmd = L;
+        ycmd = L/Ts*(tim-2*Ts-4);
+        zcmd = L;
+    elseif (tim>3*Ts+4 && tim<=3*Ts+6)
+        xcmd = L;
+        ycmd = L;
+        zcmd = L;
+    elseif (tim>3*Ts+6 && tim<=4*Ts+6)
+        xcmd = L-L/Ts*(tim-3*Ts-6);
+        ycmd = L;
+        zcmd = L;
+    elseif (tim>4*Ts+6 && tim<=4*Ts+8)
+        xcmd = 0;
+        ycmd = L;
+        zcmd = L;
+    elseif (tim>4*Ts+8 && tim<=5*Ts+8)
+        xcmd = 0;
+        ycmd = L-L/Ts*(tim-4*Ts-8);
+        zcmd = L;
+    elseif (tim>5*Ts+8 && tim<=5*Ts+10)
+        xcmd = 0;
+        ycmd = 0;
+        zcmd = L;
+    elseif (tim>5*Ts+10 && tim<=6*Ts+10)
+        xcmd = 0;
+        ycmd = 0;
+        zcmd = L-L/Ts*(tim-5*Ts-10);
+    else
+        xcmd = 0;
+        ycmd = 0;
+        zcmd = 0;
+    end
